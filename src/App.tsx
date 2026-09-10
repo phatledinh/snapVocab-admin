@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { AdminLayout } from './components/layout/AdminLayout';
 import { ContentStudioPage } from './features/content-studio/ContentStudioPage';
 import { DashboardPage } from './features/dashboard/DashboardPage';
+import { AnalyticsPage } from './features/analytics/AnalyticsPage';
+import { TopicsDecksPage } from './features/topics/TopicsDecksPage';
+import { TemplatesPage } from './features/templates/TemplatesPage';
 import { ArrowLeft, Sparkles, ShoppingBag, Users } from 'lucide-react';
 
 export function App() {
@@ -11,11 +14,34 @@ export function App() {
   const renderCurrentView = () => {
     switch (activeNav) {
       case 'dashboard':
-      case 'analytics':
         return <DashboardPage onNavigate={setActiveNav} />;
+
+      case 'analytics':
+        return (
+          <AnalyticsPage
+            onNavigate={setActiveNav}
+            onWordChange={setCurrentWordTitle}
+          />
+        );
 
       case 'content-studio':
         return <ContentStudioPage onWordChange={setCurrentWordTitle} />;
+
+      case 'topics':
+        return (
+          <TopicsDecksPage
+            onNavigate={setActiveNav}
+            onWordChange={setCurrentWordTitle}
+          />
+        );
+
+      case 'templates':
+        return (
+          <TemplatesPage
+            onNavigate={setActiveNav}
+            onWordChange={setCurrentWordTitle}
+          />
+        );
 
       case 'ai-queue':
       case 'ai-monitor':

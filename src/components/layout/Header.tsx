@@ -19,7 +19,17 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="text-text-light">/</span>
             <span className="text-text-muted">Dashboard</span>
             <span className="text-text-light">/</span>
-            <span className="font-semibold text-text">Operational Pulse & Analytics</span>
+            <span className="font-semibold text-text">Operational Pulse & Triage</span>
+          </>
+        );
+      case 'analytics':
+        return (
+          <>
+            <span className="text-text-muted">Overview</span>
+            <span className="text-text-light">/</span>
+            <span className="text-text-muted">Analytics</span>
+            <span className="text-text-light">/</span>
+            <span className="font-semibold text-text">Deep-Dive Intelligence & Cohorts</span>
           </>
         );
       case 'content-studio':
@@ -32,6 +42,26 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="font-semibold text-text">
               {currentWordTitle ? `Editing: ${currentWordTitle}` : 'Split-Screen Editor'}
             </span>
+          </>
+        );
+      case 'topics':
+        return (
+          <>
+            <span className="text-text-muted">Learning</span>
+            <span className="text-text-light">/</span>
+            <span className="text-text-muted">Topics & Decks</span>
+            <span className="text-text-light">/</span>
+            <span className="font-semibold text-text">Taxonomy & System Decks</span>
+          </>
+        );
+      case 'templates':
+        return (
+          <>
+            <span className="text-text-muted">Learning</span>
+            <span className="text-text-light">/</span>
+            <span className="text-text-muted">Templates</span>
+            <span className="text-text-light">/</span>
+            <span className="font-semibold text-text">Card Templates Studio & Management</span>
           </>
         );
       case 'ai-queue':

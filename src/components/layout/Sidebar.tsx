@@ -55,7 +55,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeNav, onNavigate }) => {
           badgeColor: 'bg-primary-light text-primary',
         },
         { id: 'topics', label: 'Topics & Decks', icon: <FolderTree size={16} /> },
-        { id: 'templates', label: 'Templates', icon: <Layers size={16} /> },
+        {
+          id: 'templates',
+          label: 'Templates',
+          icon: <Layers size={16} />,
+          badge: 'M3',
+          badgeColor: 'bg-primary-light text-primary font-bold',
+        },
       ],
     },
     {
