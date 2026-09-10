@@ -5,6 +5,7 @@ import { DashboardPage } from './features/dashboard/DashboardPage';
 import { AnalyticsPage } from './features/analytics/AnalyticsPage';
 import { TopicsDecksPage } from './features/topics/TopicsDecksPage';
 import { TemplatesPage } from './features/templates/TemplatesPage';
+import { AIScanMonitorPage } from './features/ai-scan/AIScanMonitorPage';
 import { ArrowLeft, Sparkles, ShoppingBag, Users } from 'lucide-react';
 
 export function App() {
@@ -46,34 +47,11 @@ export function App() {
       case 'ai-queue':
       case 'ai-monitor':
         return (
-          <div className="h-full w-full flex flex-col items-center justify-center p-8 text-center bg-background select-none">
-            <div className="w-14 h-14 rounded-2xl bg-snapy-light text-snapy flex items-center justify-center mb-4 border border-snapy/20 shadow-xs">
-              <Sparkles size={28} />
-            </div>
-            <h2 className="text-lg font-bold text-text mb-1">
-              AI Scan Review Queue (18 Thẻ Chờ Duyệt)
-            </h2>
-            <p className="text-xs text-text-muted max-w-md mb-6 leading-relaxed">
-              Màn hình đối soát ảnh gốc từ camera mobile với nhãn Gemini Vision, tính năng 1-Click Correction và gán lại nhãn từ vựng (Lộ trình Sprint 3).
-            </p>
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() => setActiveNav('dashboard')}
-                className="px-4 py-2 rounded-lg bg-surface hover:bg-surface-subtle border border-border text-xs font-semibold text-text flex items-center gap-2 transition-all shadow-xs"
-              >
-                <ArrowLeft size={14} />
-                <span>Quay lại Dashboard</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveNav('content-studio')}
-                className="px-4 py-2 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-all shadow-xs"
-              >
-                Mở Content Studio
-              </button>
-            </div>
-          </div>
+          <AIScanMonitorPage
+            activeNav={activeNav}
+            onNavigate={setActiveNav}
+            onWordChange={setCurrentWordTitle}
+          />
         );
 
       case 'shop':
