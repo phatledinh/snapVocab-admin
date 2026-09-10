@@ -1,22 +1,85 @@
 import React from 'react';
-import { Search, Bell, ShieldCheck, HelpCircle, Terminal } from 'lucide-react';
+import { Search, Bell } from 'lucide-react';
 
 interface HeaderProps {
   currentWordTitle?: string;
+  activeNav?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ currentWordTitle }) => {
+export const Header: React.FC<HeaderProps> = ({
+  currentWordTitle,
+  activeNav = 'dashboard',
+}) => {
+  const renderBreadcrumb = () => {
+    switch (activeNav) {
+      case 'dashboard':
+        return (
+          <>
+            <span className="text-text-muted">Overview</span>
+            <span className="text-text-light">/</span>
+            <span className="text-text-muted">Dashboard</span>
+            <span className="text-text-light">/</span>
+            <span className="font-semibold text-text">Operational Pulse & Analytics</span>
+          </>
+        );
+      case 'content-studio':
+        return (
+          <>
+            <span className="text-text-muted">Learning</span>
+            <span className="text-text-light">/</span>
+            <span className="text-text-muted">Content Studio</span>
+            <span className="text-text-light">/</span>
+            <span className="font-semibold text-text">
+              {currentWordTitle ? `Editing: ${currentWordTitle}` : 'Split-Screen Editor'}
+            </span>
+          </>
+        );
+      case 'ai-queue':
+        return (
+          <>
+            <span className="text-text-muted">AI Studio</span>
+            <span className="text-text-light">/</span>
+            <span className="text-text-muted">Review Queue</span>
+            <span className="text-text-light">/</span>
+            <span className="font-semibold text-snapy">Pending Inspection [18]</span>
+          </>
+        );
+      case 'shop':
+        return (
+          <>
+            <span className="text-text-muted">LiveOps</span>
+            <span className="text-text-light">/</span>
+            <span className="text-text-muted">Shop & Economy</span>
+            <span className="text-text-light">/</span>
+            <span className="font-semibold text-[#9A7000]">Currency Circulation</span>
+          </>
+        );
+      case 'learners':
+        return (
+          <>
+            <span className="text-text-muted">People</span>
+            <span className="text-text-light">/</span>
+            <span className="text-text-muted">Learners</span>
+            <span className="text-text-light">/</span>
+            <span className="font-semibold text-primary">Learner 360 & Streak Support</span>
+          </>
+        );
+      default:
+        return (
+          <>
+            <span className="text-text-muted">SnapVocab Admin</span>
+            <span className="text-text-light">/</span>
+            <span className="font-semibold text-text capitalize">{activeNav.replace('-', ' ')}</span>
+          </>
+        );
+    }
+  };
+
   return (
     <header className="h-12 border-b border-border bg-surface px-4 flex items-center justify-between select-none shrink-0">
-      {/* Left: Breadcrumbs */}
+      {/* Left: Dynamic Breadcrumbs */}
       <div className="flex items-center gap-2 text-xs">
-        <span className="text-text-muted">Learning</span>
-        <span className="text-text-light">/</span>
-        <span className="text-text-muted">Content Studio</span>
-        <span className="text-text-light">/</span>
-        <span className="font-semibold text-text">
-          {currentWordTitle ? `Editing: ${currentWordTitle}` : 'Split-Screen Editor'}
-        </span>
+        {renderBreadcrumb()}
       </div>
 
       {/* Center: Command Palette Trigger */}
