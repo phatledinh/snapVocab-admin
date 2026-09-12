@@ -95,15 +95,27 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeNav, onNavigate }) => {
           label: 'Issue Reports',
           icon: <AlertTriangle size={16} />,
           badge: 3,
-          badgeColor: 'bg-danger-light text-danger',
+          badgeColor: 'bg-danger-light text-danger font-bold',
         },
       ],
     },
     {
       title: 'SYSTEM',
       items: [
-        { id: 'activity-log', label: 'Audit Activity Log', icon: <History size={16} /> },
-        { id: 'settings', label: 'Settings', icon: <Settings size={16} /> },
+        {
+          id: 'activity-log',
+          label: 'Audit Activity Log',
+          icon: <History size={16} />,
+          badge: 'LIVE',
+          badgeColor: 'bg-emerald-50 text-emerald-600 font-bold border border-emerald-200/60',
+        },
+        {
+          id: 'settings',
+          label: 'Settings',
+          icon: <Settings size={16} />,
+          badge: 'v12',
+          badgeColor: 'bg-neutral-100 text-neutral-600 font-bold border border-border',
+        },
       ],
     },
   ];
